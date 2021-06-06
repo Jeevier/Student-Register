@@ -1,21 +1,21 @@
-.user-form{
-    width: 25rem;
-    max-width: 90%;
-    margin:0 auto;
+.user-form {
+  width: 25rem;
+  max-width: 90%;
+  margin: 0 auto;
 }
-.user-form label{
-    display:inline-block;
-    margin: 0.5rem 0;
+.user-form label {
+  display: inline-block;
+  margin: 0.5rem 0;
 }
 .user-form input {
-    line-height:1.5rem;
-    border: 1px solid #ccc;
-    width: 100%;
-    font: inherit;
-    outline: none;
+  line-height: 1.5rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  font: inherit;
+  outline: none;
 }
 
-.user-form input:focus{
-    border-color: #8b005d;
-    background:#ffb9e8;
+.user-form input:focus {
+  border-color: #8b005d;
+  background: #ffb9e8;
 }

@@ -1,17 +1,15 @@
 .list-items {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    width: 25rem;
-    max-width: 90%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 25rem;
+  max-width: 90%;
 }
 
-
-.list-items li{
-    margin:0.7rem auto;
-    border: 1px solid #ccc;
-    padding:5px;
-    display:flex;
-    justify-content: flex-start;
-
+.list-items li {
+  margin: 0.7rem auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
 }

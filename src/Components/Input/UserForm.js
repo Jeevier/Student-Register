@@ -34,7 +34,9 @@ function UserForm(props) {
       content={
         inValidForm
           ? "Please enter a valid name and age(non-empty values)."
-          : inValidAge ? "Please enter a valid age(>0).": null
+          : inValidAge
+          ? "Please enter a valid age(>0)."
+          : null
       }
     ></Modal>
   );

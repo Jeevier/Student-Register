@@ -7,9 +7,9 @@ function Modal(props) {
   return (
     <div className={styles.backdrop} onClick={props.onModal}>
       <Card className={styles.modal}>
-        <h4>Invalid Input</h4>
+        <h4>{props.title}</h4>
 
-        <p>{props.content}</p>
+        <p>{props.message}</p>
 
         <Button type="button" onClick={props.onModal}>
           Okay

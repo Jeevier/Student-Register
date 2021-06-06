@@ -5,8 +5,7 @@ import Modal from "../UI/Modal";
 
 function UserForm(props) {
   const [enteredData, setEnteredData] = useState({ name: "", age: "" });
-  const [inValidForm, setInValidForm] = useState(false);
-  const [inValidAge, setInValidAge] = useState(false);
+  const [error, setError] = useState();
   const nameHandler = (e) => {
     setEnteredData((prevData) => {
       return { ...prevData, name: e.target.value };
@@ -18,28 +17,31 @@ function UserForm(props) {
     });
   };
   const modalHandler = () => {
-    setInValidForm(false);
-    setInValidAge(false);
+    setError(null);
   };
   const submitBtnHandler = (e) => {
     e.preventDefault();
 
-    if (enteredData.name === "" || enteredData.age === "") setInValidForm(true);
-    else if (enteredData.age <= 0) setInValidAge(true);
-    else props.onSubmit(enteredData);
+    if (enteredData.name.trim() === "" || enteredData.age === "") {
+      setError({
+        title: "Invalid Input",
+        message: "Please enter a valid name and age(non-empty values).",
+      });
+      return;
+    }
+    if (+enteredData.age <= 0) {
+      setError({
+        title: "Invalid Input",
+        message: "Please enter a valid age(>0).",
+      });
+      return;
+    }
+    props.onSubmit(enteredData);
+
+    enteredData.age = "";
+    enteredData.name = "";
   };
-  const modal = (
-    <Modal
-      onModal={modalHandler}
-      content={
-        inValidForm
-          ? "Please enter a valid name and age(non-empty values)."
-          : inValidAge
-          ? "Please enter a valid age(>0)."
-          : null
-      }
-    ></Modal>
-  );
+
   return (
     <form className={styles[`user-form`]} onSubmit={submitBtnHandler}>
       <label>UserName</label>
@@ -47,8 +49,13 @@ function UserForm(props) {
       <label>Age(Years)</label>
       <input type="number" onChange={ageHandler} value={enteredData.age} />
       <Button>Add User</Button>
-      {inValidAge && modal}
-      {inValidForm && modal}
+      {error && (
+        <Modal
+          title={error.title}
+          message={error.message}
+          onModal={modalHandler}
+        />
+      )}
     </form>
   );
 }
